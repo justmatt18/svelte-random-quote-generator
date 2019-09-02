@@ -52,13 +52,17 @@
         border-radius: 15px;
     }
 
-
+    #btn-generate:hover{
+        background: #829FD9;
+        color: #212121;
+    }
 
     .quote-content {
-        height: 600px;
         background: #0F2027;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        border-radius: 1em;
 
     }
 
@@ -68,25 +72,41 @@
     }
 
     p#myquote { 
-        
         font-size: 50px;
         font-family: 'Chilanka', cursive;
+        text-align: center;
+        transition: border-bottom .50s ease;
+    }
+
+    p#myquote:hover{
+        cursor: pointer;
+        border-bottom: 10px solid #F3F0DB;
+        border-radius: 10px;
     }
 
     p#author {
         font-size: 30px;
+        cursor: pointer;
 
     }
 
     p#category{
         font-size: 25px;
         font-family: 'Permanent Marker', cursive;
+        cursor: pointer;
     }
-    
 
+
+    @media only screen and (max-width: 425px){
+        p#myquote[class^="svelte"]{
+            font-size: 30px;
+        }
+
+        p#author[class^="svelte"]{
+            font-size: 15px;
+        }
+    }
 </style>
-
-
 
 <div class="container">
 
@@ -96,14 +116,14 @@
             <button id="btn-generate" type="button" class="btn btn-primary p-3" on:click = {getRandomQuote} >Generate New Quote</button>
         </div>
 
-        <div class="quote-content">
+        <div class="container quote-content mb-2">
             <div class="row justify-content-center">
                 <div class="col-md-10 pt-5 my-5">
                     <p id="myquote">"{quote}"</p>
                 </div>
             </div>
             <div class="row justify-content-end pt-5 px-2">
-                <div class="col-4 pt-3">
+                <div class="col-6 col-md-5 col-sm-4 pt-3">
                     <p id="author">-{author}</p>
                 </div>
             </div>
